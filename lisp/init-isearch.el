@@ -45,6 +45,26 @@ This is useful when followed by an immediate kill."
 
 (define-key isearch-mode-map [(control return)] 'sanityinc/isearch-exit-other-end)
 
+; 去除 isearch-forward 到达底端的提示
+(defun isearch-repeat-forward+ ()
+  (interactive)
+  (unless isearch-forward
+    (goto-char isearch-other-end))
+  (isearch-repeat-forward)
+  (unless isearch-success
+    (isearch-repeat-forward)))
+; 去除 isearch-backword 到达顶部的提示
+(defun isearch-repeat-backward+ ()
+  (interactive)
+  (when (and isearch-forward isearch-other-end)
+    (goto-char isearch-other-end))
+  (isearch-repeat-backward)
+  (unless isearch-success
+    (isearch-repeat-backward)))
+
+
+(define-key isearch-mode-map (kbd "C-s") 'isearch-repeat-forward+)
+(define-key isearch-mode-map (kbd "C-r") 'isearch-repeat-backward+)
 
 (provide 'init-isearch)
 ;;; init-isearch.el ends here

@@ -1,4 +1,4 @@
-;;; init-windows.el --- Working with windows within frames -*- lexical-binding: t -*-
+;; init-windows.el --- Working with windows within frames -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; This is not about the "Windows" OS, but rather Emacs's "windows"
@@ -10,14 +10,16 @@
 ;; Navigate window layouts with "C-c <left>" and "C-c <right>"
 
 (add-hook 'after-init-hook 'winner-mode)
-
-
-;; Make "C-x o" prompt for a target window when there are more than 2
+;; Make "C-x C-o" prompt for a target window when there are more than 2
+;; switch window
 (require-package 'switch-window)
-(setq-default switch-window-shortcut-style 'alphabet)
+;; 默认是用数字来选择窗口，这样更好，就不会被输入法给烦恼了。
+;;(setq-default switch-window-shortcut-style 'qwerty)
 (setq-default switch-window-timeout nil)
-(global-set-key (kbd "C-x o") 'switch-window)
+(global-set-key (kbd "C-x C-o") 'switch-window)
 
+(global-set-key (kbd "C-x 4 C-f") 'switch-window-then-find-file)
+(global-set-key (kbd "C-x 4 C-o") 'switch-window-then-display-buffer)
 
 
 ;; When splitting window, show (other-buffer) in the new window
@@ -32,11 +34,12 @@
       (unless arg
         (select-window target-window)))))
 
-(global-set-key (kbd "C-x 2") (split-window-func-with-other-buffer 'split-window-vertically))
-(global-set-key (kbd "C-x 3") (split-window-func-with-other-buffer 'split-window-horizontally))
+;; (global-set-key (kbd "C-x 2") (split-window-func-with-other-buffer 'split-window-vertically))
+;; (global-set-key (kbd "C-x 3") (split-window-func-with-other-buffer 'split-window-horizontally))
 
 (defun sanityinc/toggle-delete-other-windows ()
-  "Delete other windows in frame if any, or restore previous window config."
+  "Delete other windows in frame if any, or restore previous window config.
+"
   (interactive)
   (if (and winner-mode
            (equal (selected-window) (next-window)))

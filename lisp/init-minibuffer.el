@@ -34,11 +34,17 @@
       (sanityinc/no-consult-preview sanityinc/affe-grep-at-point)
       (with-eval-after-load 'affe (sanityinc/no-consult-preview affe-grep)))
 
-    (global-set-key [remap switch-to-buffer] 'consult-buffer)
+    (global-set-key (kbd "C-x C-b") 'consult-buffer)
+    (global-set-key (kbd "C-x o") 'consult-outline)
     (global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
+    (global-set-key (kbd "C-x 4 C-f") 'find-file-other-window)
+    (global-set-key (kbd "C-x 4 C-b") 'consult-buffer-other-window)
     (global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
     (global-set-key [remap goto-line] 'consult-goto-line)
-
+    (global-set-key [remap yank-pop] 'consult-yank-pop)
+    (global-set-key (kbd "C-x C-l") 'consult-line)
+    (global-set-key (kbd "C-x f") 'consult-ripgrep)
+    (global-set-key (kbd "C-x C-r") 'consult-recent-file)
 
 
     (when (maybe-require-package 'embark-consult)
