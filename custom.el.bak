@@ -1,0 +1,79 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(ef-summer))
+ '(org-agenda-files
+   '("c:/Users/14246/Desktop/myGithub/BOOK/随想/todo.org" "c:/Users/14246/Desktop/myGithub/OB/Zettelkasten/PermanentBox/test.org"))
+ '(package-selected-packages
+   '(envrc uptimes shfmt dotenv-mode htmlize lua-mode gnuplot sudo-edit flycheck-ledger ledger-mode origami regex-tool info-colors flycheck-clojure cider elein cljsbuild-mode clojure-mode slime cask-mode flycheck-relint cl-libify package-lint-flymake highlight-quoted macrostep aggressive-indent immortal-scratch auto-compile ipretty elisp-slime-nav paredit nginx-mode nixos-options nix-buffer nix-sandbox nixpkgs-fmt nix-mode terraform-mode docker-compose-mode dockerfile-mode docker yaml-mode flycheck-rust rust-mode flycheck-nim nim-mode j-mode dune-format dune tuareg sqlformat projectile-rails yard-mode bundler yari robe ruby-compilation inf-ruby rspec-mode ruby-hash-syntax psci psc-ide purescript-mode elm-test-runner elm-mode dhall-mode haskell-mode reformatter toml-mode pip-requirements restclient httprepl haml-mode css-eldoc skewer-less sass-mode rainbow-mode tagedit org-pomodoro writeroom-mode org-cliplink smarty-mode php-mode add-node-modules-path skewer-mode js-comint coffee-mode xref-js2 prettier-js typescript-mode js2-mode json-mode erlang csv-mode markdown-mode textile-mode crontab-mode alert ibuffer-projectile vc-darcs whitespace-cleanup-mode which-key highlight-escape-sequences whole-line-or-region move-dup page-break-lines multiple-cursors avy browse-kill-ring symbol-overlay rainbow-delimiters mode-line-bell vlf list-unicode-display unfill mmm-mode session switch-window corfu orderless marginalia consult-flycheck embark-consult affe projectile consult embark vertico consult-eglot eglot flymake-flycheck flymake ibuffer-vc rg wgrep anzu diff-hl diredfl disable-mouse default-text-scale dimmer ef-themes color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized command-log-mode scratch diminish exec-path-from-shell gnu-elpa-keyring-update fullframe seq undo-tree use-package-hydra use-package hydra dotgenv-mode org-modern))
+ '(session-use-package t nil (session)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; 设置英文字体
+;; Setting English Font
+(set-face-attribute
+ 'default nil :font "FiraCode Nerd Font Mono 18")
+;; 设置中文字体
+;; support emacs
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "Microsoft Yahei UI" :size 22)))
+
+;; Disable the system cursor caused by screen reader etc.
+(setq w32-use-visible-system-caret nil)
+;; 设置光标形状
+;; set cursor-type box
+(setq-default cursor-type 'box)
+;; 设置光标颜色
+;; (set-cursor-color "red")
+;; 取消备份
+(setq make-backup-files nil)
+
+;; 设置相对行号
+(setq display-line-numbers-type 'absolute)
+(global-display-line-numbers-mode t)
+
+;; highlight current line
+(global-hl-line-mode 1)
+
+;; mode line size indication-mode
+(size-indication-mode 1)
+
+;; eamcs builtin search enhance
+
+(setq system-time-locale "C")
+
+;; emacs macro（宏）
+(fset 'scroll-up-next-window
+      (kmacro-lambda-form [?\C-- ?\C-\M-v] 0 "%d"))
+
+;; 将宏绑定到快捷键上
+(global-set-key (kbd "C-M-b") 'scroll-up-next-window)
+
+;; 窗口操作
+;; 类似 vim 的 ctrl-w hjkl 移动窗口
+(global-set-key (kbd "C-x w") nil)
+(global-set-key (kbd "C-x w p") 'windmove-up)
+(global-set-key (kbd "C-x w n") 'windmove-down)
+(global-set-key (kbd "C-x w b") 'windmove-left)
+;; 交换窗口
+(global-set-key (kbd "C-x w s") nil)
+(global-set-key (kbd "C-x w f") 'windmove-right)
+(global-set-key (kbd "C-x w s p") 'windmove-swap-states-up)
+(global-set-key (kbd "C-x w s n") 'windmove-swap-states-down)
+(global-set-key (kbd "C-x w s b") 'windmove-swap-states-left)
+(global-set-key (kbd "C-x w s f") 'windmove-swap-states-right)
+
+;; 快速关闭指定窗口
+(global-set-key (kbd "C-x w d") 'switch-window-then-delete)
+
+;; 配置 esc 等于 quit
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))

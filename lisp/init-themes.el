@@ -4,6 +4,7 @@
 
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
+(require-package 'ef-themes)
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
@@ -13,7 +14,10 @@
 ;; 默认主题
 ;; sanityinc-tomorrow-day
 ;; sanityinc-solarized-light
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-day))
+;; ef-spring 绿色主题
+;; ef-summer 粉色主题
+;; ef-forst  浅蓝主题
+(setq-default custom-enabled-themes '(ef-forst))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -32,13 +36,13 @@
 (defun light ()
   "Activate a light color theme."
   (interactive)
-  (setq custom-enabled-themes '(sanityinc-tomorrow-day))
+  (setq custom-enabled-themes '(ef-spring))
   (reapply-themes))
 
 (defun dark ()
   "Activate a dark color theme."
   (interactive)
-  (setq custom-enabled-themes '(sanityinc-tomorrow-bright))
+  (setq custom-enabled-themes '(ef-winter))
   (reapply-themes))
 
 

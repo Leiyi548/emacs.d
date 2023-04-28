@@ -43,7 +43,12 @@
     (global-set-key [remap goto-line] 'consult-goto-line)
     (global-set-key [remap yank-pop] 'consult-yank-pop)
     (global-set-key (kbd "C-x C-l") 'consult-line)
-    (global-set-key (kbd "C-x f") 'consult-ripgrep)
+    (global-set-key (kbd "M-g M-l") 'consult-line)
+    (global-set-key (kbd "M-g M-o") 'consult-outline)
+    (global-set-key (kbd "C-x f") nil)
+    (global-set-key (kbd "C-x f t") 'consult-ripgrep)
+    (global-set-key (kbd "C-x f b") 'consult-bookmark)
+    (global-set-key (kbd "C-x f a") 'consult-org-agenda)
     (global-set-key (kbd "C-x C-r") 'consult-recent-file)
 
 

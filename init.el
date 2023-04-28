@@ -4,9 +4,9 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
-;;; Code:
+;;; Code
 
-;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issuesx
 ;;(setq debug-on-error t)
 
 (let ((minver "26.1"))
